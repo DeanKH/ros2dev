@@ -1,0 +1,9 @@
+curl
+vim
+tmux
+cmake
+htop
+bash-completion
+zsh
+python3-pip
+x11-apps

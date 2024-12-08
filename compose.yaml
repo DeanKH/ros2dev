@@ -1,0 +1,45 @@
+services:
+  ros2dev:
+    image: ros2dev:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ros2dev
+    tty: true
+    stdin_open: true
+    network_mode: host
+    privileged: true
+    user: "${UID}:${GID}"
+    working_dir: /home/${USER}
+    volumes:
+      - /dev:/dev
+      - type: bind
+        source: /tmp/.X11-unix
+        target: /tmp/.X11-unix:rw
+      - type: bind
+        source: ./home 
+        target: /home/${USER}
+      - type: bind
+        source: ${HOME}/.tmux.conf
+        target: /home/${USER}/.tmux.conf
+      - /etc/group:/etc/group:ro
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/shadow:/etc/shadow:ro
+      - /etc/sudoers:/etc/sudoers:ro
+      - /etc/sudoers.d:/etc/sudoers.d:ro
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      - DISPLAY=${DISPLAY}
+      - USER=${USER}
+      - QT_X11_NO_MITSHM=1
+      - XAUTHORITY=${XAUTHORITY}
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - LIBGL_ALWAYS_SOFTWARE=1
+      - XDG_RUNTIME_DIR=/tmp/x11
