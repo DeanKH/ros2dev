@@ -4,17 +4,17 @@
 
 ### Common
 
-- ROS Distribution の切り替えが容易  
-  humble, Jazzy, and later
-- RMW の切り替えが容易  
-  FastDDS, CycloneDDS, Zenoh
-- CUDA あり/なし
-- デバイスにアクセス可能
+- [ ] ROS Distribution の切り替えが容易  
+       humble, Jazzy, and later
+- [ ] RMW の切り替えが容易  
+       FastDDS, CycloneDDS, Zenoh
+- [ ] CUDA あり/なし
+- [x] デバイスにアクセス可能
 
 ### development
 
-- C++と Python のコーディングができる
-  コード補完，フォーマッティング
+- [ ] C++と Python のコーディングができる
+      コード補完，フォーマッティング
 
 ## 手順
 
